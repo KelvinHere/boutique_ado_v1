@@ -30,3 +30,9 @@
 
 ### Social media login note
 In sites > Domain Name > example_whatever change this to something appropriate as some social logins require this info
+
+### Allauth TEMPLATES
+- These live in site packages, make a route templates/allauth dir
+- drop in the templates ie:-
+- `cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* ./templates/allauth/`
+- customise
