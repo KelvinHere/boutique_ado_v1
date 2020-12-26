@@ -36,3 +36,9 @@ In sites > Domain Name > example_whatever change this to something appropriate a
 - drop in the templates ie:-
 - `cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* ./templates/allauth/`
 - customise
+
+### FREE SAMPLE DATA SETS
+Caggle.com
+
+### Fixtures
+Fixtures (a dir called fixtures in an app) are used to load data quickly into a django database so not to have to do it manually in admin
