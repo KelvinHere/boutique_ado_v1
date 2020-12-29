@@ -50,3 +50,11 @@ Fixtures (a dir called fixtures in an app) are used to load data quickly into a 
 * `python3 manage.py makemigrations` To make migrations
 * `python3 manage.py migrate --plan` To plan the excution of migrations to make sure we are not missing anything
 * `python3 manage.py migrate` Run the migrations
+
+### CrispyForms forms
+- `pip3 install django-crispy-forms` allows bootstrap style formating of forms automatically
+- In settings.py
+    - add `'crispy_forms',` to INSTALLED_APPS
+    - tell it what pack by adding `CRISPY_TEMPLATE_PACK = 'bootstrap4'`
+    - add builtins to allow sitewide use of these `'builtins' : ['crispy_forms.templatetags.crispy_forms_tags', 'crispy_forms.templatetags.crispy_forms_field',]` check the file for location of this (inside templates)
+- Remember to freeze requirements
