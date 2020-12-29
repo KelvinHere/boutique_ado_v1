@@ -58,3 +58,6 @@ Fixtures (a dir called fixtures in an app) are used to load data quickly into a 
     - tell it what pack by adding `CRISPY_TEMPLATE_PACK = 'bootstrap4'`
     - add builtins to allow sitewide use of these `'builtins' : ['crispy_forms.templatetags.crispy_forms_tags', 'crispy_forms.templatetags.crispy_forms_field',]` check the file for location of this (inside templates)
 - Remember to freeze requirements
+
+### Stripe
+`pip3 install stripe`

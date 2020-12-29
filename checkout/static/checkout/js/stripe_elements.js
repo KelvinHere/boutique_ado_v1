@@ -30,3 +30,19 @@ var card = elements.create('card', {style: style}); // Create a card object from
 
 card.mount('#card-element'); // Mount the card object to the card element in checkout.html
 
+// Handle realtime validation errors on the card element
+card.addEventListener('change', function (event) {
+    var errorDiv = document.getElementById('card-errors');
+    if (event.error) {
+        var html = `
+            <span class="icon" role="alert">
+                <i class="fas fa-times"></i>
+            </span>
+            <span>${event.error.message}</span>
+        `;
+        $(errorDiv).html(html);
+    } else {
+        errorDiv.textContent = '';
+        
+    }
+});
