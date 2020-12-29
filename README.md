@@ -42,3 +42,11 @@ Caggle.com
 
 ### Fixtures
 Fixtures (a dir called fixtures in an app) are used to load data quickly into a django database so not to have to do it manually in admin
+
+### Migrations
+
+* Create models
+* `python3 manage.py makemigrations --dry-run` Check migrations with dry run for errors
+* `python3 manage.py makemigrations` To make migrations
+* `python3 manage.py migrate --plan` To plan the excution of migrations to make sure we are not missing anything
+* `python3 manage.py migrate` Run the migrations
