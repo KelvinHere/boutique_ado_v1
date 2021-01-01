@@ -21,9 +21,8 @@ class OrderForm(forms.ModelForm):
             'street_address1': 'Street Address 1',
             'street_address2': 'Street Address 2',
             'town_or_city': 'Town or City',
-            'county': 'County',
+            'county': 'County, State or Locality',
             'postcode': 'Post Code',
-            'country': 'Country',
         }
 
         # Auto focus on full name field
@@ -31,10 +30,11 @@ class OrderForm(forms.ModelForm):
 
         # Itterate through fields adding a * if field is required
         for field in self.fields:
-            if self.fields[field].required:
-                placeholder = f'{placeholders[field]} *'
-            else:
-                placeholder = placeholders[field]
+            if field != 'country':
+                if self.fields[field].required:
+                    placeholder = f'{placeholders[field]} *'
+                else:
+                    placeholder = placeholders[field]
 
             # Set placeholder to field
             self.fields[field].widget.attrs['placeholder'] = placeholder

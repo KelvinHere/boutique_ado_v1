@@ -59,5 +59,11 @@ Fixtures (a dir called fixtures in an app) are used to load data quickly into a 
     - add builtins to allow sitewide use of these `'builtins' : ['crispy_forms.templatetags.crispy_forms_tags', 'crispy_forms.templatetags.crispy_forms_field',]` check the file for location of this (inside templates)
 - Remember to freeze requirements
 
+### Django Countries
+* List of countries with ISO codes
+* `pip3 install django-countries`
+* pip freeze
+* For drop down menu of countries that converts to ISO code in form
+
 ### Stripe
 `pip3 install stripe`
