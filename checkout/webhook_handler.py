@@ -2,6 +2,7 @@ from django.http import HttpResponse
 
 from .models import Order, OrderLineItem
 from products.models import Product
+from profiles.models import UserProfile
 
 import json
 import time
@@ -39,6 +40,23 @@ class StripeWH_Handler:
             if value == "":
                 shipping_details.address[field] = None
 
+        # Update profile information if saved_info was checked and the view has not already done it
+        profile = None  # So anon users can still check out
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            # Get user profile
+            profile = UserProfile.objects.get(user__username=username)
+            # Save shipping details to profile if save details checkbox is checked
+            if save_info:
+                profile.default_phone_number = shipping_details.phone
+                profile.default_country = shipping_details.address.country
+                profile.default_postcode = shipping_details.address.postal_code
+                profile.default_town_or_city = shipping_details.address.city
+                profile.default_street_address1 = shipping_details.address.line1
+                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_county = shipping_details.address.state
+                profile.save()
+
         order_exists = False
         attempt = 1
         while attempt <= 5: # Try to see if order exists 5 times over 5 seconds
@@ -74,6 +92,7 @@ class StripeWH_Handler:
                 # Order did not exist so make new order from json in payment intent
                 order = Order.objects.create(
                     full_name=shipping_details.name,
+                    user_profile=profile, # Add user profile to order
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
                     country=shipping_details.address.country,
@@ -107,7 +126,7 @@ class StripeWH_Handler:
                 if order:
                     # Delete the order, stripe will try the webhook again later
                     order.delete()
-                    return HttpResponse(content=f'Webhook received: {event["type"]} | ERROR@ {e}',
+                    return HttpResponse(content=f'Webhook received: {event["type"]} | ERROR: {e}',
                     status=500)
         # Order will now have been created by the webhook handler so tell stripe its all good
         return HttpResponse(
