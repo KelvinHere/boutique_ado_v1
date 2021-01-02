@@ -111,3 +111,9 @@ Fixtures (a dir called fixtures in an app) are used to load data quickly into a 
 - Temp stop heroku from collecting static files when we deploy
     - `heroku config:set DISABLE_COLLECTSTATIC=1 --app boutique-ado-kelvinhere`
 - Add hostname of the heroku app to "ALLOWED_HOSTS" in settings.py
+
+- initialise heoku git `heroku git:remote -a boutique-ado-kelvinhere`
+- push to heroku `git push heroku master`
+- Link to github auto deploy if you want
+
+- Goto a django secret key generator and generate a key, add this to heroku > config vars as SECRET_KEY
