@@ -93,3 +93,21 @@ Fixtures (a dir called fixtures in an app) are used to load data quickly into a 
 - So the DB env_var does not end up in version control
 
 - Now the heroku app and database are ready to go
+
+### Gunicorn
+
+- Install a webserver, we will use
+- `pip3 install gunicorn`
+- freeze requirements
+
+### Procfile
+
+- Create procfile to tell heroku how to run app (tell heroku to run a web dyno)
+
+
+### Deploy to heroku
+
+- login to CLI
+- Temp stop heroku from collecting static files when we deploy
+    - `heroku config:set DISABLE_COLLECTSTATIC=1 --app boutique-ado-kelvinhere`
+- Add hostname of the heroku app to "ALLOWED_HOSTS" in settings.py
