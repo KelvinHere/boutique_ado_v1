@@ -67,3 +67,29 @@ Fixtures (a dir called fixtures in an app) are used to load data quickly into a 
 
 ### Stripe
 `pip3 install stripe`
+
+### Heroku & PostgresDB
+
+- Create app
+- On heroku website > resources > search postgres > free hobby tier
+- install dj-database `pip3 install dj_database_url`
+- install psycopg2-binary `pip3 install psycopg2-binary`
+- freeze requirements `pip3 freeze > requirements.txt`
+
+- Set up PostgresDB
+- comment out database from settings.py
+- add `DATABASES = {'default': dj_database_url.parse('POSTGRES_ENV_VAR_FROM_HEROKU_SETTINGS')}` instead
+- show migrations will show you the DB needs to be migrated again
+    - `python3 manage.py migrate`
+- Use fixtures to move items to the new database
+    - `python3 manage.py loaddata categories`
+    - `python3 manage.py loaddata products`
+    - Do categories first as products depend on the categories
+    - `python3 manage.py createsuperuser` and complete fields
+
+- IMPORTANT
+- remove `DATABASES = {'default': dj_database_url.parse('POSTGRES_ENV_VAR_FROM_HEROKU_SETTINGS')}`
+- uncomment original DATABASES in settings.py
+- So the DB env_var does not end up in version control
+
+- Now the heroku app and database are ready to go
