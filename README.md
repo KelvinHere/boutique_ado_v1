@@ -205,3 +205,17 @@ Fixtures (a dir called fixtures in an app) are used to load data quickly into a 
 - Set up real confirmation emails
 - Get real stripe keys, not test ones
 - Write tests for the apps, especially checkout and bag, some security adjustments and more automation between development and production deployment
+
+
+### Hook up emails (for gmail)
+
+- Gmail settings > accounts and import > other google account settings
+- Security > signing into google > setup 2 step verification
+- Security now has app passwords option
+- App passwords screen
+    - App: Mail
+    - Device type: Other > type in django
+    - take password and enter it as a config variable in heroku EMAIL_HOST_PASS
+    - enter another var - EMAIL_HOST_USER : email_to_use@gmail.com
+    - Check diff in settings.py for code in commit "EMAIL: Add email through gmail"
+    
