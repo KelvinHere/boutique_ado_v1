@@ -179,4 +179,4 @@ Fixtures (a dir called fixtures in an app) are used to load data quickly into a 
 - `pip3 install django-storages`
 - Freeze
 - Add `'storages',` to installed apps in settings.py
-- Check diff for settings.py to see the setup for AWS in the commit "FEAT: Added AWS to project"
+- Check diff for settings.py to see the setup for AWS in the commit "FEAT: Added AWS to project and locations for static files"
