@@ -173,10 +173,35 @@ Fixtures (a dir called fixtures in an app) are used to load data quickly into a 
         - download the CSV which will contain the user and SECRET_ACCESS key to allow s3 authentication through the django app (do not leak these)
         - you must download these immediatley as you cannot download again once we are off the page
 
-* #### Configure Django to connect to s3
+* #### Configure Django to connect to s3 and deal with static files
 
 - `pip3 install boto3`
 - `pip3 install django-storages`
 - Freeze
 - Add `'storages',` to installed apps in settings.py
 - Check diff for settings.py to see the setup for AWS in the commit "FEAT: Added AWS to project and locations for static files"
+
+
+* #### Configure S3 for media files
+
+- Go to bucket and add a meda folder alongside static folder and Save
+- Open it > upload > add files > select all the product images
+- (couldnt find the option "Grant public access to this object(s) before uploading file but it seems to work on heroku as the images load)  It could be the make public option, but not sure if that also grants write access too.
+
+
+### Finalise deployment initialisation on heroku
+
+- Veryfy superusers email as currently you can only do that from admin
+- login to admin on heroku deployed site goto accounts > email_addresses
+- If you dont see email you may need to attempt to login first to force allauth to create it, do that and try email_addresses in the admin again
+
+* Finally add stripe keys to heroku environment variables
+* Create a new stripe webhook to send requests to the heroku deployed site
+* Grab the new webhook signing secret and add it to heroku env variables
+
+### To make this real
+
+- More stripe testing
+- Set up real confirmation emails
+- Get real stripe keys, not test ones
+- Write tests for the apps, especially checkout and bag, some security adjustments and more automation between development and production deployment
