@@ -218,4 +218,12 @@ Fixtures (a dir called fixtures in an app) are used to load data quickly into a 
     - take password and enter it as a config variable in heroku EMAIL_HOST_PASS
     - enter another var - EMAIL_HOST_USER : email_to_use@gmail.com
     - Check diff in settings.py for code in commit "EMAIL: Add email through gmail"
-    
+
+
+### Checking fror lint errors
+
+- Linters will only report on open files
+- To Invoke linter manually to check all files
+- `python3 -m flake8` will output all problems
+- CRTL-CLICK will take you to the file and line the problem is on
+- DO NOT TRY TO FIX LINTING ERRORS ON AUTOMATICALLY GENERATED FILES ie, migration files

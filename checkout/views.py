@@ -30,6 +30,7 @@ def cache_checkout_data(request):
             processed right now. Please try again later.')
         return HttpResponse(content=e, status=400)
 
+
 def checkout(request):
     # Setup stripe 'payment intent'
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
@@ -76,7 +77,7 @@ def checkout(request):
                                 quantity=quantity,
                                 product_size=size,
                             )
-                            order_line_item.save()                            
+                            order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your bag was not found in our database."
