@@ -16,7 +16,7 @@
 * In settings.py TEMPLATES the line `'django.template.context_processors.request'` is required by allauth
 
 - Add AUTHENTICATION_BACKENDS list to settings.py
-- Add `site_id = 1` under AUTHENTICATION_BACKENDS
+- Add `SITE_ID = 1` under AUTHENTICATION_BACKENDS
 - Add the following to installed apps
     - 'django.contrib.sites',
     - 'allauth',
