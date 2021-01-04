@@ -2,8 +2,9 @@
 
 ## Quick Django setup
 - `$ pip3 install django`
-- `$ django-admin startproject project_name_here .`
+- `$ django-admin startproject project_name_here .` (remember the full stop to create in current directory)
 - `$ python3 manage.py runserver` check django is working
+- add `*.sqlite3 and *.pyc` to .gitignore
 - `$ python3 manage.py migrate` migrate all the tables of your installed apps to create your database file.
 - `$ python3 manage.py createsuperuser` create project admin
 
