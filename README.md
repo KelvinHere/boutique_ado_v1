@@ -12,6 +12,7 @@
 
 * `$ pip install django-allauth` Open source login system
 * [Allauth link for setup in settings.py](https://django-allauth.readthedocs.io/en/latest/installation.html)
+* Copy paste backends into the settings above into settings.py (context processors is already in the file)  And add info to installed apps (only put ones that are not there yet and only pick needed ones from # ... include the providers you want to enable:)
 * In settings.py TEMPLATES the line `'django.template.context_processors.request'` is required by allauth
 
 - Add AUTHENTICATION_BACKENDS list to settings.py
