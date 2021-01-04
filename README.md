@@ -23,7 +23,7 @@
     - 'allauth.account',
     - 'allauth.socialaccount',
 
-* Add in urls.py URL_PATTERNS `path('accounts', include('allauth.urls')),`
+* Add in urls.py URL_PATTERNS `path('accounts/', include('allauth.urls')),`
 * Import include from django.iurls
 * Urls for login, logout, password reset etc
 
